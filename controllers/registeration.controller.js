@@ -19,12 +19,7 @@ exports.registerUser = (req,res, next) => {
                     message: "Invalid email"
                 })
             }
-            if (req.body.password !== req.body.confirmPassword) {
-                return res.status(400).json({
-                    message: "Password mismatch"
-                })
-
-            }
+            
             if (!validator.isStrongPassword(req.body.password)) {
                 return res.status(411).json({
                     message: "Please Enter Strong Pasword"
@@ -37,6 +32,7 @@ exports.registerUser = (req,res, next) => {
                     lastName: req.body.lastName,
                     phnNo: req.body.phnNo,
                     email: req.body.email,
+                    loginId: req.body.loginId,
                     password: hash
                 });
                 details
